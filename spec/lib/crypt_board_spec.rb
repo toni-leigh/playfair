@@ -34,8 +34,8 @@ describe CryptBoard do
 		expect( crypt_board.crypt_key ).to be_kind_of (String)
 	end
 
-	xit "should contain the characters of the crypt key in order with duplicates removed" do
-
+	it "should contain the characters of the crypt key in order with duplicates removed" do
+		expect( crypt_board.prepared_crypt_key ).to be == 'PLAYFIRCHE'
 	end
 
 end
