@@ -3,7 +3,7 @@ require "encrypter"
 
 describe Encrypter do
 
-	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE - THIS TEST MESSAGE MUST BE ENCRYPTED NICELY') }
+	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE - THIS TEST MESSAGE MUST BE ENCRYPTED CAREFULLY') }
 
 	it "should store the unencrypted message" do
 		expect( encrypter.message ).to be_kind_of (String)
@@ -25,12 +25,16 @@ describe Encrypter do
 	context "Encrypting" do		
 
 		it "should strip the spaces" do
-			expect( encrypter.strip_spaces ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
+			expect( encrypter.strip_spaces ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLY'
+		end
+
+		it "should append a 'Z' if it's got an odd number of chars" do
+			expect( encrypter.handle_odd_char_count ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLYZ'
 		end
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
 		it "should replace any pair of equal characters in the message with the string <char1><q><char2>" do
-
+			expect( encrypter.replace_pairs ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 
 		context "Rows and columns" do
