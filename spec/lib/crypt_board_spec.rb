@@ -27,7 +27,7 @@ describe CryptBoard do
 	end
 
 	it "should have unique letter entries in each of the 25 cells" do
-
+		expect( crypt_board.full_key.chars.to_a.uniq.length ).to be == 25
 	end
 
 	it "should have a string containing the crypt key" do
