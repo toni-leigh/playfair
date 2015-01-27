@@ -3,11 +3,19 @@ require "crypt_board"
 
 describe CryptBoard do
 
+	let(:crypt_board) { CryptBoard.new }
+
+	let(:input) { Input.new( 'data/crypt_data.txt', crypt_board ) }
+
 	it "should be created by the Input object in this application" do
 
-		expect( subject.file_target_object ).to be_kind_of (CryptBoard)
+		expect( input.file_target_object ).to be_kind_of (CryptBoard)
 
-		expect( subject.file_target_object ).to respond_to (:convert_data)
+	end
+
+	it "should respond to convert_data call via the Input object" do
+
+		expect( crypt_board ).to respond_to(:convert_data)
 
 	end
 

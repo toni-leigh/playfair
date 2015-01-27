@@ -3,7 +3,7 @@ require "input"
 
 describe Input do
 
-	it "should read the cipher file" do
+	it "should read a file" do
 
 		expect( IO.read(subject.file_source).length ).to be > 0
 
@@ -16,8 +16,6 @@ describe Input do
 	it "should create a data processing object that responds to a convert_data method call" do
 
 		expect( subject.file_target_object ).to be_kind_of (Object)
-
-		expect( subject.file_target_object ).to respond_to (:convert_data)
 
 	end
 
