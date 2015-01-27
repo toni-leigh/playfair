@@ -71,6 +71,4 @@ describe CryptBoard do
 		end
 	end
 
-	it "should have a function that converts characters found "
-
 end
