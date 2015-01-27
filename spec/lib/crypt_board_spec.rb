@@ -50,6 +50,27 @@ describe CryptBoard do
 		expect( crypt_board.full_key ).to be == 'PLAYFIRCHEBDGJKMNOSTUVWXZ'
 	end
 
+	# PLAYF
+	# IRCHE
+	# BDGJK
+	# MNOST
+	# UVWXZ
+
+	context "function that retrieves characters from any given direction" do 
+		it "gets the character from the next cell" do
+			expect( crypt_board.get_char(3,2,'up') ).to be == 'G'
+			expect( crypt_board.get_char(3,2,'down') ).to be == 'W'
+			expect( crypt_board.get_char(3,2,'left') ).to be == 'O'
+			expect( crypt_board.get_char(3,2,'right') ).to be == 'S'
+		end
+		it "gets the character from the first cell if it points at the last cell" do
+			expect( crypt_board.get_char(0,0,'up') ).to be == 'U'
+			expect( crypt_board.get_char(4,4,'down') ).to be == 'F'
+			expect( crypt_board.get_char(0,0,'left') ).to be == 'F'
+			expect( crypt_board.get_char(4,4,'right') ).to be == 'U'
+		end
+	end
+
 	it "should have a function that converts characters found "
 
 end

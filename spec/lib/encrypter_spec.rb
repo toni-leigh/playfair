@@ -3,10 +3,6 @@ require "encrypter"
 
 describe Encrypter do
 
-	it "should have a function that retrieves the character from the next cell in any given direction" do
-
-	end
-
 	context "Boxes - functionality identical whether encrypting or decrypting" do
 
 		it "should replace the first character in the pair with the character in the same row but in the column of it's partner" do
