@@ -37,7 +37,10 @@ describe Encrypter do
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
 		it "should replace any pair of equal characters in the message with the string <char1><q>" do
-			expect( encrypter.replace_pairs ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
+			encrypter.strip_spaces
+			encrypter.handle_odd_char_count
+			encrypter.make_pairs
+			expect( encrypter.message_as_pairs ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 
 		context "Rows and columns" do
