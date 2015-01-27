@@ -3,7 +3,7 @@ require "encrypter"
 
 describe Encrypter do
 
-	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE AND THIS TEST MESSAGE MUST BE ENCRYPTED NICELY') }
+	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE - THIS TEST MESSAGE MUST BE ENCRYPTED NICELY') }
 
 	it "should store the unencrypted message" do
 		expect( encrypter.unencrypted ).to be_kind_of (String)
@@ -25,7 +25,7 @@ describe Encrypter do
 	context "Encrypting" do		
 
 		it "should strip the spaces" do
-			expect( encrypter.unencrypted ).to be == 'THISISATESTMESSAGEANDTHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
+			expect( encrypter.unencrypted ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
 		end
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
