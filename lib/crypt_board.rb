@@ -20,10 +20,11 @@ class CryptBoard
 
 	def create_crypt_array
 		@crypt_array = []
+		full_key_array = @full_key.chars.to_a
 		(0..4).each do |row|
 			@crypt_array[row] = []
 			(0..4).each do |col|
-				@crypt_array[row][col] = ''
+				@crypt_array[row][col] = full_key_array[(row*5) + col]
 			end
 		end
 	end
