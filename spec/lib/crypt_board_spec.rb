@@ -38,6 +38,18 @@ describe CryptBoard do
 		expect( crypt_board.crypt_array[4][4] ).to be =='Z'
 	end
 
+	xit "should get the position of a character in the array" do
+		expect( crypt_board.crypt_array['P'] ).to be == { :row => 0, :col => 0 }
+		expect( crypt_board.crypt_array['L'] ).to be == { :row => 0, :col => 1 }
+		expect( crypt_board.crypt_array['F'] ).to be == { :row => 0, :col => 4 }
+
+		expect( crypt_board.crypt_array['G'] ).to be == { :row => 2, :col => 2 }
+
+		expect( crypt_board.crypt_array['U'] ).to be == { :row => 4, :col => 0 }
+		expect( crypt_board.crypt_array['X'] ).to be == { :row => 4, :col => 3 }
+		expect( crypt_board.crypt_array['Z'] ).to be == { :row => 4, :col => 4 }
+	end
+
 	it "should have unique letter entries in each of the 25 cells" do
 		expect( crypt_board.full_key.chars.to_a.uniq.length ).to be == 25
 	end
