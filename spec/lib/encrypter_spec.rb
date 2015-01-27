@@ -25,7 +25,7 @@ describe Encrypter do
 	context "Encrypting" do		
 
 		it "should strip the spaces" do
-			expect( encrypter.unencrypted ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
+			expect( encrypter.encrypted ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
 		end
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
