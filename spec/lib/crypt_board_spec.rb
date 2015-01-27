@@ -3,6 +3,14 @@ require "crypt_board"
 
 describe CryptBoard do
 
+	it "should be created by the Input object in this application" do
+
+		expect( subject.file_target_object ).to be_kind_of (CryptBoard)
+
+		expect( subject.file_target_object ).to respond_to (:convert_data)
+
+	end
+
 	it "should contain an array with five cells which is the first row" do
 
 	end

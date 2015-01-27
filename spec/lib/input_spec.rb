@@ -13,9 +13,9 @@ describe Input do
 
 	end
 
-	it "should create a new CryptBoard object" do
+	it "should create a data processing object that responds to a convert_data method call" do
 
-		expect( subject.file_target_object ).to be_kind_of (CryptBoard)
+		expect( subject.file_target_object ).to be_kind_of (Object)
 
 		expect( subject.file_target_object ).to respond_to (:convert_data)
 
