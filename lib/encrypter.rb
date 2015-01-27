@@ -4,11 +4,11 @@ class Encrypter
 
 	def initialize(message)
 		@unencrypted = message
-		strip_spaces		
+		@unencrypted = strip_spaces
 	end
 
 	def strip_spaces
-		@encrypted = @unencrypted.gsub(/\p{^Alnum}/, '')
+		@unencrypted.gsub(/\p{^Alnum}/, '')
 	end
 
 end

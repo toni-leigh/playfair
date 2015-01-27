@@ -25,12 +25,11 @@ describe Encrypter do
 	context "Encrypting" do		
 
 		it "should strip the spaces" do
-			expect( encrypter.encrypted ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
+			expect( encrypter.strip_spaces ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDNICELY'
 		end
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
 		it "should replace any pair of equal characters in the message with the string <char1><q><char2>" do
-
 		end
 
 		context "Rows and columns" do
