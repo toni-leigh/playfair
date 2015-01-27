@@ -60,7 +60,7 @@ describe CryptBoard do
 		it "gets the character from the next cell" do
 			expect( crypt_board.get_char(3,2,:up) ).to be == 'G'
 			expect( crypt_board.get_char(3,2,:down) ).to be == 'W'
-			expect( crypt_board.get_char(3,2,:left) ).to be == 'O'
+			expect( crypt_board.get_char(3,2,:left) ).to be == 'N'
 			expect( crypt_board.get_char(3,2,:right) ).to be == 'S'
 		end
 		it "gets the character from the first cell if it points at the last cell" do
