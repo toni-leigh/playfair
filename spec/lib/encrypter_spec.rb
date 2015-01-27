@@ -25,15 +25,18 @@ describe Encrypter do
 	context "Encrypting" do		
 
 		it "should strip the spaces" do
-			expect( encrypter.strip_spaces ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLY'
+			encrypter.strip_spaces
+			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLY'
 		end
 
 		it "should append a 'Z' if it's got an odd number of chars" do
-			expect( encrypter.handle_odd_char_count ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLYZ'
+			encrypter.strip_spaces
+			encrypter.handle_odd_char_count
+			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLYZ'
 		end
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
-		it "should replace any pair of equal characters in the message with the string <char1><q><char2>" do
+		it "should replace any pair of equal characters in the message with the string <char1><q>" do
 			expect( encrypter.replace_pairs ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 
