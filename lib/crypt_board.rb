@@ -1,0 +1,3 @@
+class CryptBoard
+
+end
