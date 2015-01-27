@@ -29,4 +29,17 @@ class CryptBoard
 		end
 	end
 
+	def get_char(row,col,direction)
+		case direction
+		when :up
+			row == 0 ? row = 4 : row -= 1
+		when :down
+			row == 4 ? row = 0 : row += 1
+		when :left
+			col == 0 ? col = 4 : col -= 1
+		when :right
+			col == 4 ? col = 0 : col += 1
+		end
+		@crypt_array[row][col]
+	end
 end
