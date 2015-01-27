@@ -26,7 +26,7 @@ describe CryptBoard do
 		end
 	end
 
-	xit "should have unique letter entries in each of the 25 cells" do
+	it "should have unique letter entries in each of the 25 cells" do
 
 	end
 
@@ -35,7 +35,7 @@ describe CryptBoard do
 	end
 
 	it "should contain the characters of the crypt key in order with duplicates removed" do
-		expect( crypt_board.prepared_crypt_key ).to be == 'PLAYFIRCHE'
+		expect( crypt_board.full_key ).to be == 'PLAYFIRCHEBDGKMNOQSTUVWXZ'
 	end
 
 end

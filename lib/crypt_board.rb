@@ -1,6 +1,8 @@
 class CryptBoard
 
-	attr_accessor :crypt_array, :crypt_key, :prepared_crypt_key
+	attr_accessor :crypt_array, :crypt_key, :full_key
+
+	CRYPT_ALPHABET = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
 
 	def initialize (crypt_key)
 		@crypt_key = crypt_key
@@ -13,7 +15,7 @@ class CryptBoard
 	end
 
 	def remove_key_duplicates
-		@prepared_crypt_key = @crypt_key.chars.to_a.uniq.join('')
+		@full_key = (@crypt_key + CRYPT_ALPHABET).chars.to_a.uniq.join('')
 	end
 
 	def create_crypt_array
