@@ -1,14 +1,14 @@
 class Encrypter
 
-	attr_accessor :encrypted, :unencrypted
+	attr_accessor :message
 
 	def initialize(message)
-		@unencrypted = message
-		@unencrypted = strip_spaces
+		@message = message
+		@message = strip_spaces
 	end
 
 	def strip_spaces
-		@unencrypted.gsub(/\p{^Alnum}/, '')
+		@message.gsub(/\p{^Alnum}/, '')
 	end
 
 end

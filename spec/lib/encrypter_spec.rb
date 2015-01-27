@@ -6,8 +6,8 @@ describe Encrypter do
 	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE - THIS TEST MESSAGE MUST BE ENCRYPTED NICELY') }
 
 	it "should store the unencrypted message" do
-		expect( encrypter.unencrypted ).to be_kind_of (String)
-		expect( encrypter.unencrypted.length ).to be > 0
+		expect( encrypter.message ).to be_kind_of (String)
+		expect( encrypter.message.length ).to be > 0
 	end
 
 	context "Boxes - functionality identical whether encrypting or decrypting" do
@@ -30,6 +30,7 @@ describe Encrypter do
 
 		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
 		it "should replace any pair of equal characters in the message with the string <char1><q><char2>" do
+
 		end
 
 		context "Rows and columns" do
