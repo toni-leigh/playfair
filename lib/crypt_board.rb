@@ -6,7 +6,7 @@ class CryptBoard
 
 	def initialize (crypt_key)
 		@crypt_key = crypt_key
-		remove_key_duplicates
+		set_full_key
 		create_crypt_array
 	end
 
@@ -14,7 +14,7 @@ class CryptBoard
 
 	end
 
-	def remove_key_duplicates
+	def set_full_key
 		@full_key = (@crypt_key + CRYPT_ALPHABET).chars.to_a.uniq.join('')
 	end
 
