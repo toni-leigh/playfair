@@ -83,4 +83,8 @@ describe CryptBoard do
 		end
 	end
 
+	context "function that retrieves characters from opposite corners of a box" do
+
+	end
+
 end
