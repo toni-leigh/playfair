@@ -2,7 +2,7 @@ class CryptBoard
 
 	attr_accessor :crypt_array, :crypt_key, :full_key
 
-	CRYPT_ALPHABET = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
+	CRYPT_ALPHABET = 'ABCDEFGHIJKLMNOPRSTUVWXYZ'
 
 	def initialize (crypt_key)
 		@crypt_key = crypt_key

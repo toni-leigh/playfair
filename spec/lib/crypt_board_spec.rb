@@ -26,7 +26,7 @@ describe CryptBoard do
 		end
 	end
 
-	it "should have characters at the expevcted positions in the array" do
+	it "should have characters at the expected positions in the array" do
 		expect( crypt_board.crypt_array[0][0] ).to be =='P'
 		expect( crypt_board.crypt_array[0][1] ).to be =='L'
 		expect( crypt_board.crypt_array[0][4] ).to be =='F'
@@ -47,7 +47,9 @@ describe CryptBoard do
 	end
 
 	it "should contain the characters of the crypt key in order with duplicates removed" do
-		expect( crypt_board.full_key ).to be == 'PLAYFIRCHEBDGKMNOQSTUVWXZ'
+		expect( crypt_board.full_key ).to be == 'PLAYFIRCHEBDGJKMNOSTUVWXZ'
 	end
+
+	it "should have a function that converts characters found "
 
 end
