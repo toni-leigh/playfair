@@ -3,7 +3,7 @@ require "crypt_board"
 
 describe CryptBoard do
 
-	let(:crypt_board) { CryptBoard.new }
+	let(:crypt_board) { CryptBoard.new('PLAYFAIRCYPHER') }
 	let(:input) { Input.new( 'data/crypt_data.txt', crypt_board ) }
 
 	it "should be created by the Input object in this application" do
