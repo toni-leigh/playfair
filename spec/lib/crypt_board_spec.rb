@@ -26,6 +26,18 @@ describe CryptBoard do
 		end
 	end
 
+	it "should have characters at the expevcted positions in the array" do
+		expect( crypt_board.crypt_array[0][0] ).to be =='P'
+		expect( crypt_board.crypt_array[0][1] ).to be =='L'
+		expect( crypt_board.crypt_array[0][4] ).to be =='F'
+
+		expect( crypt_board.crypt_array[2][2] ).to be =='G'
+
+		expect( crypt_board.crypt_array[4][0] ).to be =='U'
+		expect( crypt_board.crypt_array[4][3] ).to be =='X'
+		expect( crypt_board.crypt_array[4][4] ).to be =='Z'
+	end
+
 	it "should have unique letter entries in each of the 25 cells" do
 		expect( crypt_board.full_key.chars.to_a.uniq.length ).to be == 25
 	end
