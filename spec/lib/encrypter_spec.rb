@@ -3,6 +3,13 @@ require "encrypter"
 
 describe Encrypter do
 
+	let(:encrypter) { Encrypter.new('This is a test message and this test message must be encrypted nicely') }
+
+	it "should store the unencrypted message" do
+		expect( encrypter.unencrypted ).to be_kind_of (String)
+		expect( encrypter.unencrypted.length ).to be > 0
+	end
+
 	context "Boxes - functionality identical whether encrypting or decrypting" do
 
 		it "should replace the first character in the pair with the character in the same row but in the column of it's partner" do
