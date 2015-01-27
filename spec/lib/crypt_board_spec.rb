@@ -15,39 +15,39 @@ describe CryptBoard do
 	end
 
 	it "should contain an array with five cells which is the first row" do
-		expect( crypt_board.crypt_array ).to be_kind_of (Array)
-		expect( crypt_board.crypt_array.length ).to be == 5
+		expect( crypt_board.lookup_char_array ).to be_kind_of (Array)
+		expect( crypt_board.lookup_char_array.length ).to be == 5
 	end
 
 	it "should have an array of five cells in each cell of the main array which build up the next four rows" do
-		crypt_board.crypt_array.each do |column|
+		crypt_board.lookup_char_array.each do |column|
 			expect( column ).to be_kind_of (Array)
 			expect( column.length ).to be == 5
 		end
 	end
 
 	it "should have characters at the expected positions in the array" do
-		expect( crypt_board.crypt_array[0][0] ).to be =='P'
-		expect( crypt_board.crypt_array[0][1] ).to be =='L'
-		expect( crypt_board.crypt_array[0][4] ).to be =='F'
+		expect( crypt_board.lookup_char_array[0][0] ).to be =='P'
+		expect( crypt_board.lookup_char_array[0][1] ).to be =='L'
+		expect( crypt_board.lookup_char_array[0][4] ).to be =='F'
 
-		expect( crypt_board.crypt_array[2][2] ).to be =='G'
+		expect( crypt_board.lookup_char_array[2][2] ).to be =='G'
 
-		expect( crypt_board.crypt_array[4][0] ).to be =='U'
-		expect( crypt_board.crypt_array[4][3] ).to be =='X'
-		expect( crypt_board.crypt_array[4][4] ).to be =='Z'
+		expect( crypt_board.lookup_char_array[4][0] ).to be =='U'
+		expect( crypt_board.lookup_char_array[4][3] ).to be =='X'
+		expect( crypt_board.lookup_char_array[4][4] ).to be =='Z'
 	end
 
-	xit "should get the position of a character in the array" do
-		expect( crypt_board.crypt_array['P'] ).to be == { :row => 0, :col => 0 }
-		expect( crypt_board.crypt_array['L'] ).to be == { :row => 0, :col => 1 }
-		expect( crypt_board.crypt_array['F'] ).to be == { :row => 0, :col => 4 }
+	it "should get the position of a character in the array" do
+		expect( crypt_board.lookup_position_array['P'] ).to be == { :row => 0, :col => 0 }
+		expect( crypt_board.lookup_position_array['L'] ).to be == { :row => 0, :col => 1 }
+		expect( crypt_board.lookup_position_array['F'] ).to be == { :row => 0, :col => 4 }
 
-		expect( crypt_board.crypt_array['G'] ).to be == { :row => 2, :col => 2 }
+		expect( crypt_board.lookup_position_array['G'] ).to be == { :row => 2, :col => 2 }
 
-		expect( crypt_board.crypt_array['U'] ).to be == { :row => 4, :col => 0 }
-		expect( crypt_board.crypt_array['X'] ).to be == { :row => 4, :col => 3 }
-		expect( crypt_board.crypt_array['Z'] ).to be == { :row => 4, :col => 4 }
+		expect( crypt_board.lookup_position_array['U'] ).to be == { :row => 4, :col => 0 }
+		expect( crypt_board.lookup_position_array['X'] ).to be == { :row => 4, :col => 3 }
+		expect( crypt_board.lookup_position_array['Z'] ).to be == { :row => 4, :col => 4 }
 	end
 
 	it "should have unique letter entries in each of the 25 cells" do

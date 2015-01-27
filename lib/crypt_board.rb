@@ -1,6 +1,6 @@
 class CryptBoard
 
-	attr_accessor :crypt_array, :crypt_key, :full_key
+	attr_accessor :crypt_key, :full_key, :lookup_char_array, :lookup_position_array
 
 	CRYPT_ALPHABET = 'ABCDEFGHIJKLMNOPRSTUVWXYZ'
 
@@ -19,12 +19,15 @@ class CryptBoard
 	end
 
 	def create_crypt_array
-		@crypt_array = []
+		@lookup_char_array = []
+		@lookup_position_array = Hash.new
 		full_key_array = @full_key.chars.to_a
 		(0..4).each do |row|
-			@crypt_array[row] = []
+			@lookup_char_array[row] = []
 			(0..4).each do |col|
-				@crypt_array[row][col] = full_key_array[(row*5) + col]
+				char = full_key_array[(row*5) + col]
+				@lookup_char_array[row][col] = char
+				@lookup_position_array[char] = { :row => row, :col => col }
 			end
 		end
 	end
@@ -40,6 +43,6 @@ class CryptBoard
 		when :right
 			col == 4 ? col = 0 : col += 1
 		end
-		@crypt_array[row][col]
+		@lookup_char_array[row][col]
 	end
 end
