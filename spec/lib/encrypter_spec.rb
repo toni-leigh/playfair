@@ -77,7 +77,7 @@ describe Encrypter do
 			encrypter.handle_odd_char_count
 			encrypter.make_pairs
 			encrypter.encrypt_message
-			expect( encrypter.encrypted_message ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
+			expect( encrypter.encrypted_message ).to be == 'SEHNHNFQHTZTHTQYMCSEHNZMTNTMTSCQMTXNNMCTQIHLFNRMGCCIPZAOFX'
 		end
 
 	end
@@ -104,7 +104,7 @@ describe Encrypter do
 
 		end
 
-		it "should store the unencrypted message" do
+		xit "should store the unencrypted message" do
 
 			expect( encrypter.unencrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 
