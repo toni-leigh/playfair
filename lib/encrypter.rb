@@ -2,10 +2,11 @@ require 'active_support/all'
 
 class Encrypter
 
-	attr_accessor :message, :message_as_pairs
+	attr_accessor :crypt_key, :message, :message_as_pairs
 
 	def initialize(message,crypt_key)
 		@message = message
+		@crypt_key = crypt_key
 	end
 
 	def convert_data
