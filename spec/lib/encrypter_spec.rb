@@ -36,7 +36,7 @@ describe Encrypter do
 			encrypter.strip_spaces
 			encrypter.handle_odd_char_count
 			encrypter.make_pairs
-			expect( encrypter.message_as_pairs ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
+			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 
 		context "Rows and columns" do
