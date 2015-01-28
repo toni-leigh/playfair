@@ -31,11 +31,12 @@ class Encrypter
 	end
 
 	def make_pairs
-		@message_pairs = @message.chars.to_a.in_groups_of(2)
-		@message_pairs.each_with_index do |pair,index|
+		@message_pairs = []
+		@message.chars.to_a.in_groups_of(2).each do |pair|
 			if (pair[0] == pair[1])
-				message_pairs[index][1] = 'Q'
+				pair[1] = 'Q'
 			end
+			@message_pairs << [pair[0],pair[1]]
 		end
 		@message = @message_pairs.join('')
 	end
@@ -70,7 +71,7 @@ class Encrypter
 
 	def encrypt_message
 		@encrypted_pairs = []
-		@message_pairs.each do |pair|
+		@message.chars.to_a.in_groups_of(2).each do |pair|
 			@encrypted_pairs << encrypt_pair(pair[0],pair[1])
 		end
 		@encrypted = @encrypted_pairs.join('')
