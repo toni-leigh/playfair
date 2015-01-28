@@ -2,7 +2,7 @@ require 'active_support/all'
 
 class Encrypter
 
-	attr_accessor :crypt_key, :encrypted_message, :input, :message, :message_as_pairs, :unencrypted_message
+	attr_accessor :crypt_key, :encrypted_message, :input, :message, :message_pairs, :unencrypted_message
 
 	def initialize(message,crypt_key,input)
 		@message = message
@@ -31,13 +31,13 @@ class Encrypter
 	end
 
 	def make_pairs
-		@message_as_pairs = message.chars.to_a.in_groups_of(2)
-		@message_as_pairs.each_with_index do |pair,index|
+		@message_pairs = message.chars.to_a.in_groups_of(2)
+		@message_pairs.each_with_index do |pair,index|
 			if (pair[0] == pair[1])
-				message_as_pairs[index][1] = 'Q'
+				message_pairs[index][1] = 'Q'
 			end
 		end
-		@message = @message_as_pairs.join('')
+		@message = @message_pairs.join('')
 	end
 
 	def encrypt_pair(first,second,encrypt = true)
@@ -70,7 +70,7 @@ class Encrypter
 
 	def encrypt_message
 		@encrypted_pairs = []
-		@message_as_pairs.each do |pair|
+		@message_pairs.each do |pair|
 			@encrypted_pairs << encrypt_pair(pair[0],pair[1])
 		end
 		@encrypted_message = @encrypted_pairs.join('')
