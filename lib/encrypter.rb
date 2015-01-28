@@ -40,7 +40,28 @@ class Encrypter
 	end
 
 	def encrypt_pair(first,second)
-		[first,second]
+		first_position = @crypt_key.lookup_position_array[first]
+		second_position = @crypt_key.lookup_position_array[second]
+
+		if (first_position[:row] != second_position[:row] &&
+			first_position[:col] != second_position[:col])
+			[
+				@crypt_key.get_char(first_position[:row],second_position[:col]),
+				@crypt_key.get_char(second_position[:row],first_position[:col])
+			]
+		else
+			if (first_position[:row] == second_position[:row])
+				[
+					@crypt_key.get_char(first_position[:row],first_position[:col],:right),
+					@crypt_key.get_char(second_position[:row],second_position[:col],:right)
+				]
+			else
+				[
+					@crypt_key.get_char(first_position[:row],first_position[:col],:down),
+					@crypt_key.get_char(second_position[:row],second_position[:col],:down)
+				]
+			end
+		end
 	end
 
 end
