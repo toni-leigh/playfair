@@ -59,7 +59,7 @@ describe Encrypter do
 			end
 
 			it "should replace the character in cell five with the character in cell one of the same row" do
-				expect( encrypter.encrypt_pair('A','F') ).to be == ['F','P']
+				expect( encrypter.encrypt_pair('Y','F') ).to be == ['F','P']
 			end
 
 			it "should replace a pair of characters in the same column with the characters one cell down" do
