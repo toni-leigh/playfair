@@ -2,11 +2,12 @@ require 'active_support/all'
 
 class Encrypter
 
-	attr_accessor :crypt_key, :encrypted_message, :message, :message_as_pairs, :unencrypted_message
+	attr_accessor :crypt_key, :encrypted_message, :input, :message, :message_as_pairs, :unencrypted_message
 
-	def initialize(message,crypt_key)
+	def initialize(message,crypt_key,input)
 		@message = message
 		@crypt_key = crypt_key
+		@input = input
 	end
 
 	def convert_data
