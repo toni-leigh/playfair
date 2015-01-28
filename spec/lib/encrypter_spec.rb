@@ -68,7 +68,7 @@ describe Encrypter do
 			encrypter.handle_odd_char_count
 			encrypter.make_pairs
 			encrypter.encrypt_message
-			expect( encrypter.encrypted_message ).to be == 'SEHNHNFQHTZTHTQYMCSEHNZMTNTMTSCQMTXNNMCTQIHLFNRMGCCIPZAOFX'
+			expect( encrypter.encrypted ).to be == 'SEHNHNFQHTZTHTQYMCSEHNZMTNTMTSCQMTXNNMCTQIHLFNRMGCCIPZAOFX'
 		end
 
 	end
@@ -101,7 +101,7 @@ describe Encrypter do
 			encrypter.make_pairs
 			encrypter.encrypt_message
 			encrypter.decrypt_message
-			expect( encrypter.unencrypted_message ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
+			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 
 		end
 
