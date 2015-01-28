@@ -10,11 +10,8 @@ class Encrypter
 		@input = input
 	end
 
-	def strip_spaces
+	def prepare_for_pairing
 		@message = @message.gsub(/\p{^Alnum}/, '')
-	end
-
-	def handle_odd_char_count
 		if @message.length % 2 == 1
 			@message += 'Z'
 		end
@@ -54,8 +51,7 @@ class Encrypter
 
 	def encrypt_message
 		@encrypted_pairs = []
-		strip_spaces
-		handle_odd_char_count
+		prepare_for_pairing
 		to_pair_array(@message).each do |pair|
 			if (pair[0] == pair[1])
 				pair[1] = 'Q'
