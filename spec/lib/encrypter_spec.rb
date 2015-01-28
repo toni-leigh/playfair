@@ -104,9 +104,13 @@ describe Encrypter do
 
 		end
 
-		xit "should store the unencrypted message" do
-
-			expect( encrypter.unencrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
+		it "should store the unencrypted message" do
+			encrypter.strip_spaces
+			encrypter.handle_odd_char_count
+			encrypter.make_pairs
+			encrypter.encrypt_message
+			encrypter.decrypt_message
+			expect( encrypter.unencrypted_message ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 
 		end
 
