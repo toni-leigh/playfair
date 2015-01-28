@@ -34,4 +34,8 @@ class Encrypter
 		@message = @message_as_pairs.join('')
 	end
 
+	def encrypt_pair(first,second)
+		[first,second]
+	end
+
 end
