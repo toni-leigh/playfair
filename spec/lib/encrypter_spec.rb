@@ -79,19 +79,19 @@ describe Encrypter do
 		context "Rows and columns" do
 
 			it "should replace a pair of characters in the same row with the characters one cell to the left" do
-				expect( encrypter.encrypt_pair('L','A') ).to be == ['P','L']
+				expect( encrypter.encrypt_pair('L','A',false) ).to be == ['P','L']
 			end
 
 			it "should replace the character in cell one with the character in cell five of the same row" do
-				expect( encrypter.encrypt_pair('F','P') ).to be == ['A','F']
+				expect( encrypter.encrypt_pair('F','P',false) ).to be == ['A','F']
 			end
 
 			it "should replace a pair of characters in the same column with the characters one cell down" do
-				expect( encrypter.encrypt_pair('N','V') ).to be == ['D','N']
+				expect( encrypter.encrypt_pair('N','V',false) ).to be == ['D','N']
 			end
 
 			it "should replace the character in cell one with the character in cell five of the same column" do
-				expect( encrypter.encrypt_pair('X','Y') ).to be == ['S','X']
+				expect( encrypter.encrypt_pair('X','Y',false) ).to be == ['S','X']
 			end
 
 		end

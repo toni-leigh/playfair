@@ -39,9 +39,12 @@ class Encrypter
 		@message = @message_as_pairs.join('')
 	end
 
-	def encrypt_pair(first,second)
+	def encrypt_pair(first,second,encrypt = true)
 		first_position = @crypt_key.lookup_position_array[first]
 		second_position = @crypt_key.lookup_position_array[second]
+
+		row_direction = encrypt == true ? :right : :left
+		col_direction = encrypt == true ? :down : :up
 
 		if (first_position[:row] != second_position[:row] &&
 			first_position[:col] != second_position[:col])
@@ -52,13 +55,13 @@ class Encrypter
 		else
 			if (first_position[:row] == second_position[:row])
 				[
-					@crypt_key.get_char(first_position[:row],first_position[:col],:right),
-					@crypt_key.get_char(second_position[:row],second_position[:col],:right)
+					@crypt_key.get_char(first_position[:row],first_position[:col],row_direction),
+					@crypt_key.get_char(second_position[:row],second_position[:col],row_direction)
 				]
 			else
 				[
-					@crypt_key.get_char(first_position[:row],first_position[:col],:down),
-					@crypt_key.get_char(second_position[:row],second_position[:col],:down)
+					@crypt_key.get_char(first_position[:row],first_position[:col],col_direction),
+					@crypt_key.get_char(second_position[:row],second_position[:col],col_direction)
 				]
 			end
 		end
