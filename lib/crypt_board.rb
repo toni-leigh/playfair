@@ -28,7 +28,7 @@ class CryptBoard
 		end
 	end
 
-	def get_char(row,col,direction)
+	def get_char(row,col,direction = nil)
 		case direction
 		when :up
 			row == 0 ? row = 4 : row -= 1
