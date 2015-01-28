@@ -20,6 +20,10 @@ class Encrypter
 		end
 	end
 
+	def to_pair_array(string)
+		string.chars.to_a.in_groups_of(2)
+	end
+
 	def encrypt_pair(first,second,encrypt = true)
 		first_position = @crypt_key.lookup_position_array[first]
 		second_position = @crypt_key.lookup_position_array[second]
@@ -52,7 +56,7 @@ class Encrypter
 		@encrypted_pairs = []
 		strip_spaces
 		handle_odd_char_count
-		@message.chars.to_a.in_groups_of(2).each do |pair|
+		to_pair_array(@message).each do |pair|
 			if (pair[0] == pair[1])
 				pair[1] = 'Q'
 			end
@@ -63,7 +67,7 @@ class Encrypter
 
 	def decrypt_message
 		@decrypted_pairs = []
-		@encrypted.chars.to_a.in_groups_of(2).each do |pair|
+		to_pair_array(@encrypted).each do |pair|
 			@decrypted_pairs << encrypt_pair(pair[0],pair[1],false)
 		end
 		@decrypted = @decrypted_pairs.join('')
