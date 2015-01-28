@@ -4,15 +4,6 @@ require "crypt_board"
 describe CryptBoard do
 
 	let(:crypt_board) { CryptBoard.new('PLAYFAIRCYPHER') }
-	let(:input) { Input.new( 'data/crypt_data.txt', crypt_board ) }
-
-	it "should be created by the Input object in this application" do
-		expect( input.file_target_object ).to be_kind_of (CryptBoard)
-	end
-
-	it "should respond to convert_data call via the Input object" do
-		expect( crypt_board ).to respond_to(:convert_data)
-	end
 
 	it "should contain an array with five cells which is the first row" do
 		expect( crypt_board.lookup_char_array ).to be_kind_of (Array)

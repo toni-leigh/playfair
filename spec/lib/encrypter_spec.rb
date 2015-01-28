@@ -3,7 +3,16 @@ require "encrypter"
 
 describe Encrypter do
 
-	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE - THIS TEST MESSAGE MUST BE ENCRYPTED CAREFULLY') }
+	let(:encrypter) { Encrypter.new('THIS IS A TEST MESSAGE - THIS TEST MESSAGE MUST BE ENCRYPTED CAREFULLY', CryptBoard.new('PLAYFAIRCYPHER')) }
+	let(:input) { Input.new( 'data/crypt_data.txt', encrypter ) }
+
+	it "should be created by the Input object in this application" do
+		expect( input.file_target_object ).to be_kind_of (Encrypter)
+	end
+
+	it "should respond to convert_data call via the Input object" do
+		expect( encrypter ).to respond_to(:convert_data)
+	end
 
 	it "should store the unencrypted message" do
 		expect( encrypter.message ).to be_kind_of (String)
