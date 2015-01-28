@@ -4,8 +4,12 @@ class Encrypter
 
 	attr_accessor :message, :message_as_pairs
 
-	def initialize(message)
+	def initialize(message,crypt_key)
 		@message = message
+	end
+
+	def convert_data
+
 	end
 
 	def process_message

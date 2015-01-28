@@ -10,10 +10,6 @@ class CryptBoard
 		create_crypt_array
 	end
 
-	def convert_data
-
-	end
-
 	def set_full_key
 		@full_key = (@crypt_key + CRYPT_ALPHABET).chars.to_a.uniq.join('')
 	end
