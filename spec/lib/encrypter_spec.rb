@@ -25,8 +25,8 @@ describe Encrypter do
 			expect( encrypter.encrypt_pair('R','X') ).to be == ['H','V']
 			expect( encrypter.encrypt_pair('V','Y') ).to be == ['X','L']
 			expect( encrypter.encrypt_pair('Z','P') ).to be == ['U','F']
-			expect( encrypter.encrypt_pair('D','O') ).to be == ['G','N']
-			expect( encrypter.encrypt_pair('B','T') ).to be == ['K','M']
+			expect( encrypter.encrypt_pair('D','Q') ).to be == ['G','O']
+			expect( encrypter.encrypt_pair('B','T') ).to be == ['M','N']
 			expect( encrypter.encrypt_pair('A','X') ).to be == ['Y','W']
 		end
 
@@ -63,13 +63,21 @@ describe Encrypter do
 			end
 
 			it "should replace a pair of characters in the same column with the characters one cell down" do
-				expect( encrypter.encrypt_pair('D','N') ).to be == ['N','V']
+				expect( encrypter.encrypt_pair('D','O') ).to be == ['O','V']
 			end
 
 			it "should replace the character in cell five with the character in cell one of the same column" do
 				expect( encrypter.encrypt_pair('S','X') ).to be == ['X','Y']
 			end
 
+		end
+
+		it "should create an encrypted message" do
+			encrypter.strip_spaces
+			encrypter.handle_odd_char_count
+			encrypter.make_pairs
+			encrypter.encrypt_message
+			expect( encrypter.encrypted_message ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 
 	end
@@ -87,7 +95,7 @@ describe Encrypter do
 			end
 
 			it "should replace a pair of characters in the same column with the characters one cell down" do
-				expect( encrypter.encrypt_pair('N','V',false) ).to be == ['D','N']
+				expect( encrypter.encrypt_pair('O','V',false) ).to be == ['D','O']
 			end
 
 			it "should replace the character in cell one with the character in cell five of the same column" do
@@ -97,6 +105,8 @@ describe Encrypter do
 		end
 
 		it "should store the unencrypted message" do
+
+			expect( encrypter.unencrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 
 		end
 
