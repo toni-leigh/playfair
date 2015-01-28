@@ -39,8 +39,9 @@ describe Encrypter do
 		it "should replace any pair of equal characters in the message with the string <char1><q>" do
 			encrypter.strip_spaces
 			encrypter.handle_odd_char_count
-			encrypter.make_pairs
-			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
+			encrypter.encrypt_message
+			encrypter.decrypt_message
+			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 
 		context "Rows and columns" do
@@ -66,7 +67,6 @@ describe Encrypter do
 		it "should create an encrypted message" do
 			encrypter.strip_spaces
 			encrypter.handle_odd_char_count
-			encrypter.make_pairs
 			encrypter.encrypt_message
 			expect( encrypter.encrypted ).to be == 'SEHNHNFQHTZTHTQYMCSEHNZMTNTMTSCQMTXNNMCTQIHLFNRMGCCIPZAOFX'
 		end
@@ -98,7 +98,6 @@ describe Encrypter do
 		it "should store the unencrypted message" do
 			encrypter.strip_spaces
 			encrypter.handle_odd_char_count
-			encrypter.make_pairs
 			encrypter.encrypt_message
 			encrypter.decrypt_message
 			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'

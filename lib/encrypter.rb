@@ -30,17 +30,6 @@ class Encrypter
 		end
 	end
 
-	def make_pairs
-		@message_pairs = []
-		@message.chars.to_a.in_groups_of(2).each do |pair|
-			if (pair[0] == pair[1])
-				pair[1] = 'Q'
-			end
-			@message_pairs << [pair[0],pair[1]]
-		end
-		@message = @message_pairs.join('')
-	end
-
 	def encrypt_pair(first,second,encrypt = true)
 		first_position = @crypt_key.lookup_position_array[first]
 		second_position = @crypt_key.lookup_position_array[second]
@@ -72,6 +61,9 @@ class Encrypter
 	def encrypt_message
 		@encrypted_pairs = []
 		@message.chars.to_a.in_groups_of(2).each do |pair|
+			if (pair[0] == pair[1])
+				pair[1] = 'Q'
+			end
 			@encrypted_pairs << encrypt_pair(pair[0],pair[1])
 		end
 		@encrypted = @encrypted_pairs.join('')
