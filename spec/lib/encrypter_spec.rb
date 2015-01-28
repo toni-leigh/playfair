@@ -13,7 +13,8 @@ describe Encrypter do
 	context "Boxes - functionality identical whether encrypting or decrypting" do
 
 		it "should replace the first character in the pair with the character in the same row but in the column of it's partner" do
-
+			expect( encrypter.encrypt_pair('R','X') ).to be == ['H','V']
+			expect( encrypter.encrypt_pair('V','Y') ).to be == ['X','L']
 		end
 
 		it "should replace the second character in the pair with the character in the same row but in the column of it's partner" do
