@@ -12,13 +12,9 @@ describe Encrypter do
 
 	context "Boxes - functionality identical whether encrypting or decrypting" do
 
-		it "should replace the first character in the pair with the character in the same row but in the column of it's partner" do
+		it "should replace any two characters on the corners of squares where both dimensions are at least 2 with the characters from the opposite corners - character rows must be kept in the same order" do
 			expect( encrypter.encrypt_pair('R','X') ).to be == ['H','V']
 			expect( encrypter.encrypt_pair('V','Y') ).to be == ['X','L']
-		end
-
-		it "should replace the second character in the pair with the character in the same row but in the column of it's partner" do
-
 		end
 
 	end
