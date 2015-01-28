@@ -28,8 +28,8 @@ class Encrypter
 		first_position = @crypt_key.lookup_position_array[first]
 		second_position = @crypt_key.lookup_position_array[second]
 
-		row_direction = encrypt == true ? :right : :left
-		col_direction = encrypt == true ? :down : :up
+		row_direction = encrypt ? :right : :left
+		col_direction = encrypt ? :down : :up
 
 		if (first_position[:row] != second_position[:row] &&
 			first_position[:col] != second_position[:col])
