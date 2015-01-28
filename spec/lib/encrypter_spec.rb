@@ -24,6 +24,10 @@ describe Encrypter do
 		it "should replace any two characters on the corners of squares where both dimensions are at least 2 with the characters from the opposite corners - character rows must be kept in the same order" do
 			expect( encrypter.encrypt_pair('R','X') ).to be == ['H','V']
 			expect( encrypter.encrypt_pair('V','Y') ).to be == ['X','L']
+			expect( encrypter.encrypt_pair('Z','P') ).to be == ['U','F']
+			expect( encrypter.encrypt_pair('D','O') ).to be == ['G','N']
+			expect( encrypter.encrypt_pair('B','T') ).to be == ['K','M']
+			expect( encrypter.encrypt_pair('A','X') ).to be == ['Y','W']
 		end
 
 	end
