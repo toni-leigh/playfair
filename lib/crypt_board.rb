@@ -1,6 +1,9 @@
 class CryptBoard
 
-	attr_accessor :crypt_key, :full_key, :lookup_char_array, :lookup_position_array
+	attr_accessor :crypt_key,
+		:full_key,
+		:lookup_char_array,
+		:lookup_position_array
 
 	CRYPT_ALPHABET = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
 

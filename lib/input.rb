@@ -1,6 +1,8 @@
 class Input
 
-	attr_accessor :file_data, :file_source, :file_target_object
+	attr_accessor :file_data, 
+		:file_source, 
+		:file_target_object
 
 	def initialize (file_source = 'test.txt')
 
