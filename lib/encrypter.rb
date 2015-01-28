@@ -10,16 +10,6 @@ class Encrypter
 		@input = input
 	end
 
-	def convert_data
-
-	end
-
-	def process_message
-		strip_spaces
-		handle_odd_char_count
-		make_pairs
-	end
-
 	def strip_spaces
 		@message = @message.gsub(/\p{^Alnum}/, '')
 	end
@@ -60,6 +50,8 @@ class Encrypter
 
 	def encrypt_message
 		@encrypted_pairs = []
+		strip_spaces
+		handle_odd_char_count
 		@message.chars.to_a.in_groups_of(2).each do |pair|
 			if (pair[0] == pair[1])
 				pair[1] = 'Q'

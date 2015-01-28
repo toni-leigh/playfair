@@ -25,20 +25,13 @@ describe Encrypter do
 
 	context "Encrypting" do		
 
-		it "should strip the spaces" do
-			encrypter.strip_spaces
-			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLY'
-		end
-
-		it "should append a 'Z' if it's got an odd number of chars" do
-			encrypter.strip_spaces
-			encrypter.handle_odd_char_count
+		it "should strip the spaces and should append a 'Z' if it's got an odd number of chars" do
+			encrypter.encrypt_message
+			encrypter.decrypt_message
 			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLYZ'
 		end
 
 		it "should replace any pair of equal characters in the message with the string <char1><q>" do
-			encrypter.strip_spaces
-			encrypter.handle_odd_char_count
 			encrypter.encrypt_message
 			encrypter.decrypt_message
 			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
@@ -65,8 +58,6 @@ describe Encrypter do
 		end
 
 		it "should create an encrypted message" do
-			encrypter.strip_spaces
-			encrypter.handle_odd_char_count
 			encrypter.encrypt_message
 			expect( encrypter.encrypted ).to be == 'SEHNHNFQHTZTHTQYMCSEHNZMTNTMTSCQMTXNNMCTQIHLFNRMGCCIPZAOFX'
 		end
@@ -96,8 +87,6 @@ describe Encrypter do
 		end
 
 		it "should store the unencrypted message" do
-			encrypter.strip_spaces
-			encrypter.handle_odd_char_count
 			encrypter.encrypt_message
 			encrypter.decrypt_message
 			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
