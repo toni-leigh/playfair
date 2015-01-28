@@ -36,7 +36,6 @@ describe Encrypter do
 			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLYZ'
 		end
 
-		# used 'q' as the unusual monograph as there are quite a few ee's and exe's
 		it "should replace any pair of equal characters in the message with the string <char1><q>" do
 			encrypter.strip_spaces
 			encrypter.handle_odd_char_count
