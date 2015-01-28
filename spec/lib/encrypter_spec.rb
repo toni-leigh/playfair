@@ -76,10 +76,6 @@ describe Encrypter do
 
 	context "Decrypting" do
 
-		it "should replace any three character strings where 1 and 3 are the same and 2 is a 'q' with just characters 1 and 3" do
-
-		end
-
 		context "Rows and columns" do
 
 			it "should replace a pair of characters in the same row with the characters one cell to the left" do
