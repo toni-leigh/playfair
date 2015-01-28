@@ -2,7 +2,7 @@ require 'active_support/all'
 
 class Encrypter
 
-	attr_accessor :crypt_key, :decrypted, :decrypted_pairs, :encrypted, :encrypted_pairs, :input, :message, :message_pairs
+	attr_accessor :crypt_key, :decrypted, :encrypted, :message
 
 	def initialize(message,crypt_key,input)
 		@message = message
