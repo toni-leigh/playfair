@@ -13,6 +13,8 @@ class CryptBoard
 		create_crypt_array
 	end
 
+	# build up the crypt board arrays, one references the char using position co-ordinates
+	# the other references the position co-ordinates using the char (reverse look-up)
 	def create_crypt_array
 		@lookup_char_array = []
 		@lookup_position_array = Hash.new
@@ -27,6 +29,12 @@ class CryptBoard
 		end
 	end
 
+	# gets the char optionsally in a certain direction, taking into account the edges of the board
+	# which act cyclically
+	#
+	# row & col - the position co-ordinates to start from
+	# direction - one of four directions, or nil if we just need the chars at a certain position
+	#    this is used for getting the chars at a corner
 	def get_char(row,col,direction = nil)
 		case direction
 		when :up
