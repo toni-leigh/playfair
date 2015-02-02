@@ -13,6 +13,8 @@ class Encrypter
 		@input = input
 	end
 
+	# performs string manipulation before the pairing stage, leaving us with just letters
+	# and ensuring the string has an even number of chars
 	def prepare_for_pairing
 		@message = @message.gsub(/\p{^Alnum}/, '')
 		if @message.length % 2 == 1
@@ -20,10 +22,12 @@ class Encrypter
 		end
 	end
 
+	# converts a string to an array of pairs
 	def to_pair_array(string)
 		string.chars.to_a.in_groups_of(2)
 	end
 
+	# takes a pair of chars and either encrypts or decrypts them
 	def encrypt_pair(first,second,encrypt = true)
 		first_position = @crypt_key.lookup_position_array[first]
 		second_position = @crypt_key.lookup_position_array[second]
@@ -52,6 +56,7 @@ class Encrypter
 		end
 	end
 
+	# encrypts the full message
 	def encrypt_message
 		@encrypted_pairs = []
 		prepare_for_pairing
@@ -64,6 +69,7 @@ class Encrypter
 		@encrypted = @encrypted_pairs.join('')
 	end
 
+	# decrypts the full message
 	def decrypt_message
 		@decrypted_pairs = []
 		to_pair_array(@encrypted).each do |pair|
