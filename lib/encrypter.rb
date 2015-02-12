@@ -17,9 +17,7 @@ class Encrypter
 	# and ensuring the string has an even number of chars
 	def prepare_for_pairing
 		@message = @message.gsub(/\p{^Alnum}/, '')
-		if @message.length % 2 == 1
-			@message += 'Z'
-		end
+		@message += 'Z' if @message.length % 2 == 1
 	end
 
 	# converts a string to an array of pairs
@@ -61,9 +59,7 @@ class Encrypter
 		@encrypted_pairs = []
 		prepare_for_pairing
 		to_pair_array(@message).each do |pair|
-			if (pair[0] == pair[1])
-				pair[1] = 'Q'
-			end
+			pair[1] = 'Q' if pair[0] == pair[1]
 			@encrypted_pairs << encrypt_pair(pair[0],pair[1])
 		end
 		@encrypted = @encrypted_pairs.join('')
