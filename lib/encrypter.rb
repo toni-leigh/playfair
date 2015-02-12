@@ -27,31 +27,25 @@ class Encrypter
 
 	# takes a pair of chars and either encrypts or decrypts them
 	def encrypt_pair(first,second,encrypt = true)
-		first_position = @crypt_key.lookup_position_array[first]
-		second_position = @crypt_key.lookup_position_array[second]
+		pos1 = @crypt_key.lookup_position_array[first]
+		pos2 = @crypt_key.lookup_position_array[second]
 
 		row_direction = encrypt ? :right : :left
 		col_direction = encrypt ? :down : :up
 
-		if (first_position[:row] != second_position[:row] &&
-			first_position[:col] != second_position[:col])
-			[
-				@crypt_key.get_char(first_position[:row],second_position[:col]),
-				@crypt_key.get_char(second_position[:row],first_position[:col])
-			]
-		else
-			if (first_position[:row] == second_position[:row])
-				[
-					@crypt_key.get_char(first_position[:row],first_position[:col],row_direction),
-					@crypt_key.get_char(second_position[:row],second_position[:col],row_direction)
-				]
-			else
-				[
-					@crypt_key.get_char(first_position[:row],first_position[:col],col_direction),
-					@crypt_key.get_char(second_position[:row],second_position[:col],col_direction)
-				]
-			end
-		end
+		# shift pair left or right if on the same row
+		pair = [ @crypt_key.get_char(pos1[:row],pos1[:col],row_direction),
+					@crypt_key.get_char(pos2[:row],pos2[:col],row_direction) ] if (pos1[:row] == pos2[:row])
+
+		# shirt pair up or down if in the same column
+		pair = [ @crypt_key.get_char(pos1[:row],pos1[:col],col_direction),
+					@crypt_key.get_char(pos2[:row],pos2[:col],col_direction) ] if (pos1[:col] == pos2[:col])
+
+		# swap with opposite corners if they share neither row nor column
+		pair = [ @crypt_key.get_char(pos1[:row],pos2[:col]),
+				@crypt_key.get_char(pos2[:row],pos1[:col]) ] if (pos1[:row] != pos2[:row] && pos1[:col] != pos2[:col])
+
+		pair
 	end
 
 	# encrypts the full message
