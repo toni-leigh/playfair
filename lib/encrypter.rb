@@ -26,6 +26,9 @@ class Encrypter
 	end
 
 	# takes a pair of chars and either encrypts or decrypts them
+	# 
+	# first & second are the character cells, storing position in the grid
+	# method :encrypt or :decrypt, used to tell the method which way to look at the crypt board
 	def convert_pair(first,second,method)
 		pos1 = @crypt_key.position_array[first]
 		pos2 = @crypt_key.position_array[second]
