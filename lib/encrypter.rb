@@ -33,19 +33,28 @@ class Encrypter
 		row_direction = encrypt ? :right : :left
 		col_direction = encrypt ? :down : :up
 
+		position_relationship = get_position_relationship pos1, pos2
+
 		# shift pair left or right if on the same row
 		pair = [ @crypt_key.get_char(pos1[:row],pos1[:col],row_direction),
-					@crypt_key.get_char(pos2[:row],pos2[:col],row_direction) ] if (pos1[:row] == pos2[:row])
+					@crypt_key.get_char(pos2[:row],pos2[:col],row_direction) ] if position_relationship == :row
 
-		# shirt pair up or down if in the same column
+		# shift pair up or down if in the same column
 		pair = [ @crypt_key.get_char(pos1[:row],pos1[:col],col_direction),
-					@crypt_key.get_char(pos2[:row],pos2[:col],col_direction) ] if (pos1[:col] == pos2[:col])
+					@crypt_key.get_char(pos2[:row],pos2[:col],col_direction) ] if position_relationship == :col
 
 		# swap with opposite corners if they share neither row nor column
 		pair = [ @crypt_key.get_char(pos1[:row],pos2[:col]),
-				@crypt_key.get_char(pos2[:row],pos1[:col]) ] if (pos1[:row] != pos2[:row] && pos1[:col] != pos2[:col])
+				@crypt_key.get_char(pos2[:row],pos1[:col]) ] if position_relationship == :box
 
 		pair
+	end
+
+	# gets the relationshiop between the positions of two cells, :row, :col or :box
+	def get_position_relationship(pos1,pos2)
+		return :row if pos1[:row] == pos2[:row]
+		return :col if pos1[:col] == pos2[:col]
+		return :box
 	end
 
 	# encrypts the full message
