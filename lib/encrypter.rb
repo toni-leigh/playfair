@@ -27,8 +27,8 @@ class Encrypter
 
 	# takes a pair of chars and either encrypts or decrypts them
 	def encrypt_pair(first,second,encrypt = true)
-		pos1 = @crypt_key.lookup_position_array[first]
-		pos2 = @crypt_key.lookup_position_array[second]
+		pos1 = @crypt_key.position_array[first]
+		pos2 = @crypt_key.position_array[second]
 
 		row_direction = encrypt ? :right : :left
 		col_direction = encrypt ? :down : :up

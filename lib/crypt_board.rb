@@ -1,9 +1,9 @@
 class CryptBoard
 
-	attr_accessor :crypt_key,
+	attr_accessor :char_array,
+		:crypt_key,
 		:full_key,
-		:lookup_char_array,
-		:lookup_position_array
+		:position_array
 
 	CRYPT_ALPHABET = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
 
@@ -16,15 +16,15 @@ class CryptBoard
 	# build up the crypt board arrays, one references the char using position co-ordinates
 	# the other references the position co-ordinates using the char (reverse look-up)
 	def create_crypt_array
-		@lookup_char_array = []
-		@lookup_position_array = Hash.new
+		@char_array = []
+		@position_array = Hash.new
 		full_key_array = @full_key.chars.to_a
 		(0..4).each do |row|
-			@lookup_char_array[row] = []
+			@char_array[row] = []
 			(0..4).each do |col|
 				char = full_key_array[(row*5) + col]
-				@lookup_char_array[row][col] = char
-				@lookup_position_array[char] = { :row => row, :col => col }
+				@char_array[row][col] = char
+				@position_array[char] = { :row => row, :col => col }
 			end
 		end
 	end
@@ -46,6 +46,6 @@ class CryptBoard
 		when :right
 			col == 4 ? col = 0 : col += 1
 		end
-		@lookup_char_array[row][col]
+		@char_array[row][col]
 	end
 end
