@@ -10,6 +10,11 @@ describe Encrypter do
 		expect( encrypter.message.length ).to be > 0
 	end
 
+	def encrypt_and_decrypt
+		encrypter.encrypt_message
+		encrypter.decrypt_message
+	end
+
 	context "Boxes - functionality identical whether encrypting or decrypting" do
 		it "should replace any two characters on the corners of squares where both dimensions are at least 2 with the characters from the opposite corners - character rows must be kept in the same order" do
 			expect( encrypter.encrypt_pair('R','X') ).to be == ['H','V']
@@ -23,13 +28,11 @@ describe Encrypter do
 
 	context "Encrypting" do
 		it "should strip the spaces and should append a 'Z' if it's got an odd number of chars" do
-			encrypter.encrypt_message
-			encrypter.decrypt_message
+			encrypt_and_decrypt
 			expect( encrypter.message ).to be == 'THISISATESTMESSAGETHISTESTMESSAGEMUSTBEENCRYPTEDCAREFULLYZ'
 		end
 		it "should replace any pair of equal characters in the message with the string <char1><q>" do
-			encrypter.encrypt_message
-			encrypter.decrypt_message
+			encrypt_and_decrypt
 			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 		context "Rows and columns" do
@@ -68,8 +71,7 @@ describe Encrypter do
 			end
 		end
 		it "should store the unencrypted message" do
-			encrypter.encrypt_message
-			encrypter.decrypt_message
+			encrypt_and_decrypt
 			expect( encrypter.decrypted ).to be == 'THISISATESTMESSAGETHISTESTMESQAGEMUSTBEQNCRYPTEDCAREFULQYZ'
 		end
 	end
