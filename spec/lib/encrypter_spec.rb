@@ -17,12 +17,12 @@ describe Encrypter do
 
 	context "Boxes - functionality identical whether encrypting or decrypting" do
 		it "should replace any two characters on the corners of squares where both dimensions are at least 2 with the characters from the opposite corners - character rows must be kept in the same order" do
-			expect( encrypter.encrypt_pair('R','X') ).to be == ['H','V']
-			expect( encrypter.encrypt_pair('V','Y') ).to be == ['X','L']
-			expect( encrypter.encrypt_pair('Z','P') ).to be == ['U','F']
-			expect( encrypter.encrypt_pair('D','Q') ).to be == ['G','O']
-			expect( encrypter.encrypt_pair('B','T') ).to be == ['M','N']
-			expect( encrypter.encrypt_pair('A','X') ).to be == ['Y','W']
+			expect( encrypter.convert_pair('R','X',:encrypt) ).to be == ['H','V']
+			expect( encrypter.convert_pair('V','Y',:decrypt) ).to be == ['X','L']
+			expect( encrypter.convert_pair('Z','P',:encrypt) ).to be == ['U','F']
+			expect( encrypter.convert_pair('D','Q',:decrypt) ).to be == ['G','O']
+			expect( encrypter.convert_pair('B','T',:encrypt) ).to be == ['M','N']
+			expect( encrypter.convert_pair('A','X',:decrypt) ).to be == ['Y','W']
 		end
 	end
 
@@ -37,16 +37,16 @@ describe Encrypter do
 		end
 		context "Rows and columns" do
 			it "should replace a pair of characters in the same row with the characters one cell to the right" do
-				expect( encrypter.encrypt_pair('P','L') ).to be == ['L','A']
+				expect( encrypter.convert_pair('P','L',:encrypt) ).to be == ['L','A']
 			end
 			it "should replace the character in cell five with the character in cell one of the same row" do
-				expect( encrypter.encrypt_pair('Y','F') ).to be == ['F','P']
+				expect( encrypter.convert_pair('Y','F',:encrypt) ).to be == ['F','P']
 			end
 			it "should replace a pair of characters in the same column with the characters one cell down" do
-				expect( encrypter.encrypt_pair('D','O') ).to be == ['O','V']
+				expect( encrypter.convert_pair('D','O',:encrypt) ).to be == ['O','V']
 			end
 			it "should replace the character in cell five with the character in cell one of the same column" do
-				expect( encrypter.encrypt_pair('S','X') ).to be == ['X','Y']
+				expect( encrypter.convert_pair('S','X',:encrypt) ).to be == ['X','Y']
 			end
 		end
 		it "should create an encrypted message" do
@@ -58,16 +58,16 @@ describe Encrypter do
 	context "Decrypting" do
 		context "Rows and columns" do
 			it "should replace a pair of characters in the same row with the characters one cell to the left" do
-				expect( encrypter.encrypt_pair('L','A',false) ).to be == ['P','L']
+				expect( encrypter.convert_pair('L','A',:decrypt) ).to be == ['P','L']
 			end
 			it "should replace the character in cell one with the character in cell five of the same row" do
-				expect( encrypter.encrypt_pair('F','P',false) ).to be == ['Y','F']
+				expect( encrypter.convert_pair('F','P',:decrypt) ).to be == ['Y','F']
 			end
 			it "should replace a pair of characters in the same column with the characters one cell down" do
-				expect( encrypter.encrypt_pair('O','V',false) ).to be == ['D','O']
+				expect( encrypter.convert_pair('O','V',:decrypt) ).to be == ['D','O']
 			end
 			it "should replace the character in cell one with the character in cell five of the same column" do
-				expect( encrypter.encrypt_pair('X','Y',false) ).to be == ['S','X']
+				expect( encrypter.convert_pair('X','Y',:decrypt) ).to be == ['S','X']
 			end
 		end
 		it "should store the unencrypted message" do

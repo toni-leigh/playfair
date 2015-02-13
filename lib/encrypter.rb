@@ -26,12 +26,12 @@ class Encrypter
 	end
 
 	# takes a pair of chars and either encrypts or decrypts them
-	def encrypt_pair(first,second,encrypt = true)
+	def convert_pair(first,second,method)
 		pos1 = @crypt_key.position_array[first]
 		pos2 = @crypt_key.position_array[second]
 
-		row_direction = encrypt ? :right : :left
-		col_direction = encrypt ? :down : :up
+		row_direction = method == :encrypt ? :right : :left
+		col_direction = method == :encrypt ? :down : :up
 
 		position_relationship = get_position_relationship pos1, pos2
 
@@ -63,7 +63,7 @@ class Encrypter
 		prepare_for_pairing
 		to_pair_array(@message).each do |pair|
 			pair[1] = 'Q' if pair[0] == pair[1]
-			@encrypted_pairs << encrypt_pair(pair[0],pair[1])
+			@encrypted_pairs << convert_pair(pair[0],pair[1],:encrypt)
 		end
 		@encrypted = @encrypted_pairs.join('')
 	end
@@ -72,7 +72,7 @@ class Encrypter
 	def decrypt_message
 		@decrypted_pairs = []
 		to_pair_array(@encrypted).each do |pair|
-			@decrypted_pairs << encrypt_pair(pair[0],pair[1],false)
+			@decrypted_pairs << convert_pair(pair[0],pair[1],:decrypt)
 		end
 		@decrypted = @decrypted_pairs.join('')
 	end
