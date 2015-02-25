@@ -26,8 +26,8 @@ class Encrypter
 	end
 
 	# takes a pair of chars and either encrypts or decrypts them
-	# 
-	# first & second are the character cells, storing position in the grid
+	#
+	# first & second are the characters, for retrieving positions
 	# method :encrypt or :decrypt, used to tell the method which way to look at the crypt board
 	def convert_pair(first,second,method)
 		pos1 = @crypt_key.position_array[first]
@@ -38,19 +38,19 @@ class Encrypter
 
 		position_relationship = get_position_relationship pos1, pos2
 
-		# shift pair left or right if on the same row
-		pair = [ @crypt_key.get_char(pos1[:row],pos1[:col],row_direction),
-						 @crypt_key.get_char(pos2[:row],pos2[:col],row_direction) ] if position_relationship == :row
+		case position_relationship
+		when :row
+			pair_characters([pos1[:row], pos1[:col]], [pos2[:row], pos2[:col]], row_direction)
+		when :col
+			pair_characters([pos1[:row], pos1[:col]], [pos2[:row], pos2[:col]], col_direction)
+		when :box
+			pair_characters([pos1[:row], pos2[:col]], [pos2[:row], pos1[:col]])
+		end
+	end
 
-		# shift pair up or down if in the same column
-		pair = [ @crypt_key.get_char(pos1[:row],pos1[:col],col_direction),
-						 @crypt_key.get_char(pos2[:row],pos2[:col],col_direction) ] if position_relationship == :col
-
-		# swap with opposite corners if they share neither row nor column
-		pair = [ @crypt_key.get_char(pos1[:row],pos2[:col]),
-						 @crypt_key.get_char(pos2[:row],pos1[:col]) ] if position_relationship == :box
-
-		pair
+	def pair_characters(chars1, chars2, direction = nil)
+		[ @crypt_key.get_char(*chars1, direction),
+			@crypt_key.get_char(*chars2, direction) ]
 	end
 
 	# gets the relationshiop between the positions of two cells, :row, :col or :box
