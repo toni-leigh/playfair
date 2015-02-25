@@ -5,6 +5,7 @@ class CryptBoard
 		:full_key,
 		:position_array
 
+
 	CRYPT_ALPHABET = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
 
 	def initialize (crypt_key)
@@ -27,25 +28,5 @@ class CryptBoard
 				@position_array[char] = { :row => row, :col => col }
 			end
 		end
-	end
-
-	# gets the char optionsally in a certain direction, taking into account the edges of the board
-	# which act cyclically
-	#
-	# row & col - the position co-ordinates to start from
-	# direction - one of four directions, or nil if we just need the chars at a certain position
-	#    this is used for getting the chars at a corner
-	def get_char(row,col,direction = nil)
-		case direction
-		when :up
-			row == 0 ? row = 4 : row -= 1
-		when :down
-			row == 4 ? row = 0 : row += 1
-		when :left
-			col == 0 ? col = 4 : col -= 1
-		when :right
-			col == 4 ? col = 0 : col += 1
-		end
-		@char_array[row][col]
 	end
 end

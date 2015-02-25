@@ -30,30 +30,23 @@ class Encrypter
 	# first & second are the characters, for retrieving positions
 	# method :encrypt or :decrypt, used to tell the method which way to look at the crypt board
 	def convert_pair(first,second,method)
-		pos1 = @crypt_key.position_array[first]
-		pos2 = @crypt_key.position_array[second]
+		pos1 = crypt_key.position_array[first]
+		pos2 = crypt_key.position_array[second]
 
-		row_direction = method == :encrypt ? :right : :left
-		col_direction = method == :encrypt ? :down : :up
-
-		position_relationship = get_position_relationship pos1, pos2
-
-		case position_relationship
+		case get_position_relationship pos1, pos2
 		when :row
-			pair_characters([pos1[:row], pos1[:col]], [pos2[:row], pos2[:col]], row_direction)
+			[ crypt_key.char_array[pos1[:row]][next_val(pos1[:col],method)],
+			  crypt_key.char_array[pos2[:row]][next_val(pos2[:col],method)] ]
 		when :col
-			pair_characters([pos1[:row], pos1[:col]], [pos2[:row], pos2[:col]], col_direction)
+			[ crypt_key.char_array[next_val(pos1[:row],method)][pos1[:col]],
+			  crypt_key.char_array[next_val(pos2[:row],method)][pos2[:col]] ]
 		when :box
-			pair_characters([pos1[:row], pos2[:col]], [pos2[:row], pos1[:col]])
+			[ crypt_key.char_array[pos1[:row]][pos2[:col]],
+			  crypt_key.char_array[pos2[:row]][pos1[:col]] ]
 		end
 	end
 
-	def pair_characters(chars1, chars2, direction = nil)
-		[ @crypt_key.get_char(*chars1, direction),
-			@crypt_key.get_char(*chars2, direction) ]
-	end
-
-	# gets the relationshiop between the positions of two cells, :row, :col or :box
+	# gets the relationship between the positions of two cells, :row, :col or :box
 	def get_position_relationship(pos1,pos2)
 		return :row if pos1[:row] == pos2[:row]
 		return :col if pos1[:col] == pos2[:col]
@@ -78,6 +71,16 @@ class Encrypter
 			@decrypted_pairs << convert_pair(pair[0],pair[1],:decrypt)
 		end
 		@decrypted = @decrypted_pairs.join('')
+	end
+
+	private
+
+	def next_val(val, method)
+		if (method == :encrypt)
+			val == 4 ? 0 : val + 1
+		else
+			val == 0 ? 4 : val - 1
+		end
 	end
 
 end
